@@ -21,6 +21,11 @@ header .mapmarker {
   padding: 0.8rem;
   margin-left: -1.5rem;
 }
+@media screen and (min-width: 750px) {
+  header .mapmarker {
+    padding: 1rem;
+  }
+}
 header .search-bar {
   display: flex;
   justify-content: center;
@@ -29,7 +34,7 @@ header .search-bar {
   width: 100%;
   font-size: 85%;
 }
-@media screen and (min-width: 700px) {
+@media screen and (min-width: 750px) {
   header .search-bar {
     font-size: 120%;
   }
@@ -37,6 +42,23 @@ header .search-bar {
 header .marker-text {
   background-color: #e6e6e6;
   font-weight: bold;
+}
+header .ul-header {
+  list-style-type: none;
+  text-align: center;
+}
+header .ul-header .header-main-title, header .ul-header .header-sub-title {
+  margin: 0;
+  padding: 0 2rem 0 0;
+}
+header .ul-header .header-exploration {
+  margin-top: 1rem;
+}
+header .header-exploration {
+  background: linear-gradient(to bottom right, #ff79da, #9356dc);
+  padding: 1rem;
+  border-radius: 25px;
+  text-align: center;
 }
 
 /*# sourceMappingURL=style.css.map */
