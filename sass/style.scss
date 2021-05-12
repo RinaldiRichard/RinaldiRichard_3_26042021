@@ -1,7 +1,7 @@
 $white: white;
 body {
     font-family: Roboto, sans-serif;
-   margin: 0;
+    margin: 0;
 }
 ul {
     list-style-type: none;
@@ -120,14 +120,8 @@ header {
         }
     }
 }
-.new {
-    position: absolute;
-    bottom: 13rem; left: 16rem;
-    padding: 0.3rem;
-    margin-right: 4rem;
-    background-color: #99e2d0;
-    width: min-content;
-}
+
+
 .section-restaurants {
     display: grid;
     row-gap: 1rem;
@@ -141,11 +135,9 @@ header {
         padding-top: 2rem;
     }
     @media screen and (min-width: 750px) {
-        padding: 0 6rem 4rem 6rem;
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(4, 1fr);
         grid-template-rows: auto;
         column-gap: 3rem;
-        row-gap: 3rem;
         h2 {
             grid-column: 1/-1;
         }
@@ -154,10 +146,15 @@ header {
     .liste-restaurants{
         padding: 0;
         margin: 0;
+        @media screen and (min-width:1000px) {
+            padding: 0 2rem;
+        }
     }
     .li-restaurants {
         background-color: $white;
         border-radius: 20px;
+        display: flex;
+        flex-direction: column;
         figure {
             margin: 0;
         }
@@ -165,6 +162,20 @@ header {
             text-align: left;
             padding: 0.5rem 0 0.25rem 1rem;
         }
+        .new {
+            align-items: flex-end;
+            margin-left: 2rem;
+            margin-top: -2rem;
+            padding: 0.3rem;
+            background-color: #99e2d0;
+            width: min-content;
+            transform: scale(1);
+            &:hover {
+                transform: scale(1.25);
+                transition: transform 0.5s;
+            }
+        }
+        
     }
     .list-picture {
         width: 100%; 
