@@ -1,8 +1,16 @@
+$white: white;
 body {
     font-family: Roboto, sans-serif;
    margin: 0;
 }
+ul {
+    list-style-type: none;
+}
+a {
+    text-decoration: none;
+}
 header {
+    font-family: Shrikhand, sans-serif;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -36,21 +44,177 @@ header {
         font-weight: bold;
     }
     .ul-header {
-        list-style-type: none;
+        display: grid;
+        width: 100%;
+        justify-items: center;
         text-align: center;
+        background-color: rgb(245, 245, 245);
+        margin-top: 0;
+        margin-bottom: 0;
+        padding: 0 0 3rem 0;
         .header-main-title, .header-sub-title {
             margin: 0;
-            padding: 0 2rem 0 0;
+            padding: 0 2rem 0 3rem;
+            font-size: 110%;
         }
         .header-exploration {
             margin-top: 1rem;
         }
+        .header-exploration {
+            background: linear-gradient(to bottom right,#ff79da,#9356dc);
+            padding: 1rem;
+            border-radius: 25px; 
+            width: fit-content;
+            .exploration {
+                color: $white;
+                font-weight: bold;
+            }
+        }
     }
-    .header-exploration {
-        background: linear-gradient(to bottom right,#ff79da,#9356dc);
-        padding: 1rem;
-        border-radius: 25px; 
-        text-align: center;      
+    h2 {
+        margin-bottom: 0;    
+    } 
+}  
+.filters-grid {
+    display: grid;
+    grid-template-rows: repeat(4, 1fr);
+    row-gap: 2rem;
+    padding-right: 2rem;
+   
+    h2 {
+        grid-column: 1/-1;
+        margin: 2rem 0 0 0;
+        padding: 0;
+    }
+    .li-filter {
+        display: flex;
+        flex: 1;
+        box-shadow: 0 3px 30px 1px rgb(200, 200, 200);
+        border-radius: 20px;
+        background-color: rgb(242, 242, 242);
+        align-items: center;
+        color: black;  
+        font-weight: bold;     
+    }
+    .filter-number {
+        margin-left: -0.7rem;
+        background-color: #9356dc;
+        padding: 0.2rem 0.5rem;
+        border-radius: 15px;
+        align-items: center;
+    }
+    i {
+        padding: 1.5rem 1rem;
+        color: grey;
+        margin: 0 0.5rem;
+    }
+    @media screen and (min-width: 1000px) {
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+        column-gap: 5rem; 
+        h2 {
+            grid-column: 1/-1;
+        }
+        .li-filter {
+            grid-row: 2;
+        }
+    }
+}
+.new {
+    position: absolute;
+    bottom: 13rem; left: 16rem;
+    padding: 0.3rem;
+    margin-right: 4rem;
+    background-color: #99e2d0;
+    width: min-content;
+}
+.section-restaurants {
+    display: grid;
+    row-gap: 1rem;
+    background-color: whitesmoke;
+    grid-template-rows: 5rem 15rem 15rem 15rem 15rem;
+    margin-top: 5rem;
+    padding: 1.5rem 1.5rem 4rem;
+    
+    h2 {
+        grid-row: 1;
+        padding-top: 2rem;
+    }
+    @media screen and (min-width: 750px) {
+        padding: 0 6rem 4rem 6rem;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: auto;
+        column-gap: 3rem;
+        row-gap: 3rem;
+        h2 {
+            grid-column: 1/-1;
+        }
+        
+    }
+    .liste-restaurants{
+        padding: 0;
+        margin: 0;
+    }
+    .li-restaurants {
+        background-color: $white;
+        border-radius: 20px;
+        figure {
+            margin: 0;
+        }
+        figcaption {
+            text-align: left;
+            padding: 0.5rem 0 0.25rem 1rem;
+        }
+    }
+    .list-picture {
+        width: 100%; 
+        height: 10.5rem;       
+        border-radius: 20px 20px 0 0;  
+        object-fit: cover;         
+    }      
+    .main-title-picture {
+        font-weight: bold;
+    }
+}
+.footer-grid {
+    display: grid;
+    grid-template-rows: auto;
+    row-gap: 1rem;
+    background-color: rgb(65, 65, 65);
+    font-weight: bold;
+    font-style: italic;
+    padding: 1.5rem;
+    @media  screen and (min-width: 750px) {
+        text-align: center;
+        justify-items: center;       
+    }
+    .footer-text {
+        font-family: Roboto, fantasy;
+        font-weight: 500;
+        font-size: 130%;
+        @media screen and (min-width: 750px) {
+            font-size: 150%;
+        }
+    }
+    p {
+        margin: 0;
+        color: $white;
+    }
+    .footer-div {
+        display: flex;
+        color: $white;
+
+        i {
+            padding-right: 1.5rem;
+        }
+        .footer-help {
+            margin-left: -0.5rem;
+        }
+    }
+    ul, li {
+        margin: 0;
+        padding: 0;
+        color: $white;
     }
 }
 
