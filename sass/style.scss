@@ -2,11 +2,27 @@ $white: white;
 $primaire: #9356dc;
 $secondaire: #ff79da;
 $tertiaire: #99e2d0;
+$anim-delay: 0.25s;
+$anim-duration: 1000ms;
+$bg-ball: black;
 
 
 body {
     font-family: Roboto, sans-serif;
     margin: 0;
+    opacity: 1;
+    animation: transparence $anim-duration *3;
+}
+@keyframes transparence {
+    0% {
+        opacity: 0.1;
+    }
+    80% {
+        opacity: 0.4;
+    }
+    100% {
+        opacity: 1;
+    }
 }
 ul, li {
     list-style-type: none;
@@ -14,6 +30,55 @@ ul, li {
 a {
     text-decoration: none;
 }
+.ball {
+    height: 1rem;
+    width: 1rem;
+    margin-left: 0.5rem;
+    border-radius: 1rem;
+    animation: jump $anim-duration ease-in-out ;
+    animation-direction: alternate;
+    animation-iteration-count: 2;
+    background-color: $bg-ball;
+    opacity: 0;
+   
+}
+.loading {
+    display: flex;
+    width: 100%;
+    margin-top: 35%;
+    align-items: center;
+    justify-content: center;
+    position: fixed; 
+
+    .ball-1 {
+        @extend .ball;
+        animation-delay: $anim-delay;
+    }
+    .ball-2 {
+        @extend .ball;
+        animation-delay: $anim-delay *2;
+        }
+    .ball-3 {
+        @extend .ball;
+        animation-delay: $anim-delay *3;
+        }
+    .ball-4 {
+        @extend .ball;
+        animation-delay: $anim-delay *4;
+    }
+}
+
+
+@keyframes jump {
+    0% {
+        transform: scale(1);
+    }
+    100% {
+        transform: translate(0, -2rem);
+        opacity: 1;
+    }
+}
+
 header {
     font-family: Shrikhand, sans-serif;
     display: flex;
