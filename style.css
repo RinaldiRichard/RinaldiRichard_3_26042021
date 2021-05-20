@@ -1,8 +1,21 @@
 body {
   font-family: Roboto, sans-serif;
   margin: 0;
+  opacity: 1;
+  animation: transparence 3000ms;
 }
 
+@keyframes transparence {
+  0% {
+    opacity: 0.1;
+  }
+  80% {
+    opacity: 0.4;
+  }
+  100% {
+    opacity: 1;
+  }
+}
 ul, li {
   list-style-type: none;
 }
@@ -11,6 +24,48 @@ a {
   text-decoration: none;
 }
 
+.ball, .loading .ball-4, .loading .ball-3, .loading .ball-2, .loading .ball-1 {
+  height: 1rem;
+  width: 1rem;
+  margin-left: 0.5rem;
+  border-radius: 1rem;
+  animation: jump 1000ms ease-in-out;
+  animation-direction: alternate;
+  animation-iteration-count: 2;
+  background-color: black;
+  opacity: 0;
+}
+
+.loading {
+  display: flex;
+  width: 100%;
+  margin-top: 35%;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+}
+.loading .ball-1 {
+  animation-delay: 0.25s;
+}
+.loading .ball-2 {
+  animation-delay: 0.5s;
+}
+.loading .ball-3 {
+  animation-delay: 0.75s;
+}
+.loading .ball-4 {
+  animation-delay: 1s;
+}
+
+@keyframes jump {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: translate(0, -2rem);
+    opacity: 1;
+  }
+}
 header {
   font-family: Shrikhand, sans-serif;
   display: flex;
