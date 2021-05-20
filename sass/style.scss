@@ -1,14 +1,84 @@
 $white: white;
+$primaire: #9356dc;
+$secondaire: #ff79da;
+$tertiaire: #99e2d0;
+$anim-delay: 0.25s;
+$anim-duration: 1000ms;
+$bg-ball: black;
+
+
 body {
     font-family: Roboto, sans-serif;
     margin: 0;
+    opacity: 1;
+    animation: transparence $anim-duration *3;
 }
-ul {
+@keyframes transparence {
+    0% {
+        opacity: 0.1;
+    }
+    80% {
+        opacity: 0.4;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+ul, li {
     list-style-type: none;
 }
 a {
     text-decoration: none;
 }
+.ball {
+    height: 1rem;
+    width: 1rem;
+    margin-left: 0.5rem;
+    border-radius: 1rem;
+    animation: jump $anim-duration ease-in-out ;
+    animation-direction: alternate;
+    animation-iteration-count: 2;
+    background-color: $bg-ball;
+    opacity: 0;
+   
+}
+.loading {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    position: fixed; 
+
+    .ball-1 {
+        @extend .ball;
+        animation-delay: $anim-delay;
+    }
+    .ball-2 {
+        @extend .ball;
+        animation-delay: $anim-delay *2;
+        }
+    .ball-3 {
+        @extend .ball;
+        animation-delay: $anim-delay *3;
+        }
+    .ball-4 {
+        @extend .ball;
+        animation-delay: $anim-delay *4;
+    }
+}
+
+
+@keyframes jump {
+    0% {
+        transform: scale(1);
+    }
+    100% {
+        transform: translate(0, -2rem);
+        opacity: 1;
+    }
+}
+
 header {
     font-family: Shrikhand, sans-serif;
     display: flex;
@@ -61,13 +131,17 @@ header {
             margin-top: 1rem;
         }
         .header-exploration {
-            background: linear-gradient(to bottom right,#ff79da,#9356dc);
+            background: linear-gradient(to bottom right,$secondaire, $primaire);
             padding: 1rem;
             border-radius: 25px; 
             width: fit-content;
+            &:hover {
+                transform: scale(1.05);
+                transition: transform 0.2s;
+            }
             .exploration {
                 color: $white;
-                font-weight: bold;
+                font-weight: bold;                
             }
         }
     }
@@ -76,6 +150,7 @@ header {
     } 
 }  
 .filters-grid {
+    padding: 2rem;
     display: grid;
     grid-template-rows: repeat(4, 1fr);
     row-gap: 2rem;
@@ -94,11 +169,17 @@ header {
         background-color: rgb(242, 242, 242);
         align-items: center;
         color: black;  
-        font-weight: bold;     
+        font-weight: bold; 
+        &:hover {
+            background-color: #eee4f9;
+            i {
+                color: $primaire;
+            }
+        }    
     }
     .filter-number {
         margin-left: -0.7rem;
-        background-color: #9356dc;
+        background-color: $primaire;
         padding: 0.2rem 0.5rem;
         border-radius: 15px;
         align-items: center;
@@ -128,16 +209,23 @@ header {
     background-color: whitesmoke;
     grid-template-rows: 5rem 15rem 15rem 15rem 15rem;
     margin-top: 5rem;
-    padding: 1.5rem 1.5rem 4rem;
-    
+    padding: 1.5rem 1.5rem 4rem;    
     h2 {
         grid-row: 1;
         padding-top: 2rem;
     }
+    @media screen and (min-width: 700px) {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: auto;
+        column-gap: 1rem;
+        h2 {
+            grid-column: 1/-1;
+        }
+    }
     @media screen and (min-width: 750px) {
         grid-template-columns: repeat(4, 1fr);
         grid-template-rows: auto;
-        column-gap: 3rem;
+        column-gap: 2rem;
         h2 {
             grid-column: 1/-1;
         }
@@ -150,83 +238,85 @@ header {
             padding: 0 2rem;
         }
     }
-    .li-restaurants {
+    .carte-restaurants {
         background-color: $white;
         border-radius: 20px;
-        display: flex;
-        flex-direction: column;
-        figure {
-            margin: 0;
-        }
-        figcaption {
-            text-align: left;
-            padding: 0.5rem 0 0.25rem 1rem;
-        }
+        display: block;
+        position: relative;
+        text-decoration: none;
+        color: inherit;
         .new {
-            align-items: flex-end;
-            margin-left: 2rem;
-            margin-top: -2rem;
-            padding: 0.3rem;
-            background-color: #99e2d0;
+            padding: 0.5rem;
+            background-color: $tertiaire;
             width: min-content;
-            transform: scale(1);
-            &:hover {
-                transform: scale(1.25);
-                transition: transform 0.5s;
+            height: min-content;
+            position: absolute;
+            top: 1rem;
+            right: 0.75rem;
+            color: #227964;
+            border-radius: 5px;
+        }
+        .flexdiv {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            i {
+                font-size: 2rem;
+                margin: 0 1rem 0.5rem 0;
             }
         }
-        
+        .main-title-picture {
+            font-weight: bold;
+            margin: 0;
+            padding: 0.5rem 0 0.25rem 1rem;
+        }
+        p {
+            @extend .main-title-picture;
+            font-weight: initial;
+        }
     }
     .list-picture {
         width: 100%; 
         height: 10.5rem;       
         border-radius: 20px 20px 0 0;  
         object-fit: cover;         
+    }
+    .ul-flexdiv {
+        margin-top: 0;
+        padding-left: 0;
     }      
-    .main-title-picture {
-        font-weight: bold;
-    }
+    
 }
-.footer-grid {
-    display: grid;
-    grid-template-rows: auto;
-    row-gap: 1rem;
+.footer-flex {
+    display: flex;
+    flex-direction: column;
     background-color: rgb(65, 65, 65);
-    font-weight: bold;
-    font-style: italic;
-    padding: 1.5rem;
-    @media  screen and (min-width: 750px) {
-        text-align: center;
-        justify-items: center;       
-    }
-    .footer-text {
-        font-family: Roboto, fantasy;
-        font-weight: 500;
-        font-size: 130%;
-        @media screen and (min-width: 750px) {
-            font-size: 150%;
-        }
+    padding: 1rem;
+    .footer-li {
+        display: flex;
+        padding: 0.15rem;
     }
     p {
         margin: 0;
         color: $white;
     }
-    .footer-div {
-        display: flex;
-        color: $white;
-
-        i {
-            padding-right: 1.5rem;
-        }
-        .footer-help {
-            margin-left: -0.5rem;
-        }
+    i {
+        padding-right: 1.5rem;
+    }
+    .footer-help {
+        margin-left: -0.5rem;
     }
     ul, li {
         margin: 0;
-        padding: 0;
+        padding: 0.15rem 0;
         color: $white;
     }
+}
+.footer-logo {
+    filter: invert(1);
+    max-width: 6rem;
+    padding-bottom: 1rem;
+    
 }
 
 
