@@ -128,20 +128,23 @@ ul, .divmenuflex ul li, li {
   overflow: hidden;
   cursor: pointer;
   max-width: 100%;
-  opacity: 0;
+  transform: scale(0);
+  transform-origin: left;
   animation: card-up 0.8s;
   animation-fill-mode: both;
-  top: 1rem;
 }
-.divmenuflex .confirmation {
-  display: flex;
-  width: 4rem;
-  height: 100%;
+.divmenuflex__confirmation {
   background-color: #99e2d0;
+  margin-right: -5rem;
+  width: 4rem;
+  height: 4.2rem;
+  display: flex;
   align-items: center;
   justify-content: center;
-  margin: -1rem -5rem -1rem 1rem;
   transition-duration: 0.5s;
+}
+.divmenuflex:hover .divmenuflex__confirmation {
+  margin-right: 0;
 }
 .divmenuflex .fa-check {
   background-color: #ffff;
@@ -153,21 +156,9 @@ ul, .divmenuflex ul li, li {
   color: #99e2d0;
   border-radius: 100px;
 }
-.divmenuflex:hover .confirmation {
-  animation: confirm 0.5s;
-  animation-fill-mode: both;
-}
 .divmenuflex:hover .fa-check {
   transform: rotate(-360deg);
-  transition: transform 0.5s;
-}
-@keyframes confirm {
-  0% {
-    margin: -1rem -5rem -1rem 1rem;
-  }
-  100% {
-    margin-right: 0;
-  }
+  transition: transform 0.6s;
 }
 .divmenuflex ul, .divmenuflex ul li {
   padding: 0.3rem 0;
@@ -181,7 +172,7 @@ ul, .divmenuflex ul li, li {
   text-overflow: ellipsis;
 }
 .divmenuflex p {
-  padding-right: 1rem;
+  padding-right: 2rem;
 }
 
 .bold {
@@ -190,11 +181,10 @@ ul, .divmenuflex ul li, li {
 
 @keyframes card-up {
   0% {
-    transform: opacity(0);
+    transform: scale(0);
   }
   100% {
-    transform: translateY(-2rem);
-    opacity: 1;
+    transform: scale(1);
   }
 }
 .delay {
@@ -227,7 +217,6 @@ ul, .divmenuflex ul li, li {
 
 .price {
   padding-left: 1rem;
-  word-break: normal;
 }
 
 .div-btn {

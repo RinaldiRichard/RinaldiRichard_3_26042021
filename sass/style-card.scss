@@ -8,6 +8,7 @@ $anim-delay: 0.1s;
 body {
     font-family: Roboto, sans-serif;
     margin: 0;
+    
 }
 header {
     font-family: Shrikhand, sans-serif;
@@ -81,8 +82,8 @@ ul, li {
     cursor: pointer;
     color: rgb(255, 73, 73);
     &:hover{
-        transition: opacity 0.5s;
-        opacity: 1;
+        transition: opacity 0.5s ;
+        opacity: 1;        
     }
 }
 .sous-menu {
@@ -119,20 +120,22 @@ ul, li {
     overflow: hidden;
     cursor: pointer;    
     max-width: 100%;
-    opacity: 0;
+    transform: scale(0);
+    transform-origin: left;
     animation: card-up 0.8s;
     animation-fill-mode: both;
-    top: 1rem;
-    .confirmation {
-        display: flex;
+    &__confirmation {
+        background-color: $tertiaire;
+        margin-right: -5rem ;
         width: 4rem;
-        height: 100%;
-        background-color: #99e2d0;
-        align-items: center;
-        justify-content: center;
-        margin: -1rem -5rem -1rem 1rem;
+        height: 4.2rem;
+        display:flex;
+        align-items:center;
+        justify-content:center;
         transition-duration: 0.5s;
-        
+    }    
+    &:hover &__confirmation {
+        margin-right: 0;
     }
     .fa-check {
         background-color: #ffff;
@@ -145,21 +148,9 @@ ul, li {
         border-radius: 100px;
     }
     &:hover {
-        .confirmation {
-            animation: confirm 0.5s;
-            animation-fill-mode: both;
-        }
         .fa-check {
-            transform: rotate(-360deg);
-            transition: transform 0.5s;
-        }
-    }
-    @keyframes confirm {
-        0% {
-            margin: -1rem -5rem -1rem 1rem;
-        }
-        100% {
-            margin-right: 0;
+        transform: rotate(-360deg);
+        transition: transform 0.6s;
         }
     }
     ul {
@@ -175,7 +166,7 @@ ul, li {
         }
     }
     p {
-        padding-right: 1rem;
+        padding-right: 2rem;
     }       
 }
 .bold {
@@ -183,11 +174,10 @@ ul, li {
 }
 @keyframes card-up {
     0% {
-      transform: opacity(0);
+      transform: scale(0);
     }
     100% {
-      transform: translateY(-2rem);
-      opacity: 1;
+      transform: scale(1)
     }
 }
 .delay {
@@ -219,7 +209,6 @@ ul, li {
 }
 .price {
     padding-left: 1rem;
-    word-break: normal;
 }
 
 .div-btn {
