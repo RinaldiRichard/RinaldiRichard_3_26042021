@@ -139,13 +139,15 @@ header {
             margin-top: 1rem;
         }
         .header-exploration {
-            background: linear-gradient(to bottom right,$secondaire, $primaire);
+            background-color: #686868;
+            background-image: linear-gradient(to top,rgba(147,86,220,.9),rgba(255,121,218,.9));
             padding: 1rem;
             border-radius: 25px; 
             width: fit-content;
+            box-shadow: 0.25rem 0.25rem 10px rgb(0 0 0 / 25%);
             &:hover {
-                transform: scale(1.05);
-                transition: transform 0.2s;
+                box-shadow: 0.25rem 0.25rem 10px rgb(0 0 0 / 50%);
+                background-color: #fff;
             }
             .exploration {
                 color: $white;
@@ -210,6 +212,64 @@ header {
         }
     }
 }
+.heart {
+    background-color: white !important;
+    padding-left: -1rem;
+}
+.menu {
+    margin-top: -4rem;
+    border-radius: 2rem 2rem 0 0;
+    background-color: #0000 !important;
+    z-index: 1;
+    position: relative;  
+    &__btn {
+        height: 2rem;
+        width: 2rem;
+        background-color: transparent;
+        border: transparent 0px solid;
+        padding: 0;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        cursor: pointer;
+        position: relative;
+        background-color: black;      
+        &:hover::before {
+            opacity: 1;
+        }      
+        &::before {
+            opacity: 0;
+            transition: 0.5s;
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            background:linear-gradient(0deg, $primaire 0%,$secondaire 100%);
+        }
+    }  
+    &__like {
+      transition-duration: .25s;
+      background-color: #f6f6f6;
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      mix-blend-mode: lighten;
+    }  
+    &__btn:hover {
+        .menu__like {
+            &--no-background {
+                opacity: 0;
+            }
+        }
+    }
+}
 .section-restaurants {
     display: grid;
     row-gap: 1rem;
@@ -268,27 +328,11 @@ header {
             justify-content: space-between;
             align-items: center;
             position: relative;
+            padding-right: 1rem;
             i {
                 font-size: 2rem;
                 margin: 0 1rem 0.5rem 0;
-            }
-            .fa-heart {
-                position: absolute;
-                background-color: #ffff !important;      
-                font-size: 200%;
-                right: 0.5rem;
-                bottom: 1rem;
-            }
-            .fas {
-                opacity: 0;
-                cursor: pointer;
-                color: rgb(255, 73, 73);
-                &:hover{
-                    transition: opacity 0.5s;
-                    opacity: 1;
-                }
-            }
-            
+            }            
         }
         .main-title-picture {
             font-weight: bold;

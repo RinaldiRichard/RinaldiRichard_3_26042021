@@ -37,7 +37,7 @@ header h2 {
 }
 
 a, a:hover, a:visited, a:active {
-  color: #ffff;
+  color: #fff;
   text-decoration: none;
 }
 
@@ -69,28 +69,78 @@ ul, .divmenuflex ul li, li {
 
 .header-flex {
   padding: 1rem 2rem 0 1rem;
-  display: flex;
-  align-items: center;
   justify-content: space-between;
   grid-column: 1/-1;
 }
 
-.fa-heart {
+.menu {
+  margin-top: -4rem;
+  border-radius: 2rem 2rem 0 0;
+  background-color: #f6f6f6;
+  z-index: 1;
+  position: relative;
+}
+.menu__btn {
+  height: 2rem;
+  width: 2rem;
+  background-color: transparent;
+  border: transparent 0px solid;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: relative;
+  background-color: black;
+}
+.menu__btn:hover::before {
+  opacity: 1;
+}
+.menu__btn::before {
+  opacity: 0;
+  transition: 0.5s;
+  content: "";
   position: absolute;
-  background-color: #f6f6f6 !important;
-  font-size: 200%;
-  right: 2rem;
-  bottom: 1rem;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(0deg, #9356dc 0%, #ff79da 100%);
+}
+.menu__like {
+  transition-duration: 0.25s;
+  background-color: #f6f6f6;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  mix-blend-mode: lighten;
+}
+.menu__btn:hover .menu__like--no-background {
+  opacity: 0;
 }
 
-.heart {
-  opacity: 0;
-  cursor: pointer;
-  color: #ff4949;
+.fa-heart {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
 }
-.heart:hover {
-  transition: opacity 0.5s;
-  opacity: 1;
+.fa-heart.heart {
+  transition-duration: 0.25s;
+  background-color: #f6f6f6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  mix-blend-mode: lighten;
+}
+.fa-heart.heart > :hover .test {
+  opacity: 0;
 }
 
 .sous-menu {
@@ -147,7 +197,7 @@ ul, .divmenuflex ul li, li {
   margin-right: 0;
 }
 .divmenuflex .fa-check {
-  background-color: #ffff;
+  background-color: #fff;
   width: 1.5rem;
   height: 1.5rem;
   display: flex;
@@ -233,11 +283,16 @@ ul, .divmenuflex ul li, li {
   font-weight: 500;
   font-size: 1.1rem;
   border-radius: 100px;
-  color: #ffff;
-  background-image: linear-gradient(to top, #9356dc, #ff79da);
+  color: #fff;
+  background-color: #707070;
+  background-image: linear-gradient(to top, rgba(147, 86, 220, 0.9), rgba(255, 121, 218, 0.9));
   transition-duration: 0.25s;
   box-shadow: 0.25rem 0.25rem 10px rgba(0, 0, 0, 0.25);
   cursor: pointer;
+}
+.bouton-cmd:hover {
+  background-color: #fff;
+  box-shadow: 0.25rem 0.25rem 10px rgba(0, 0, 0, 0.5);
 }
 
 .footer-flex {

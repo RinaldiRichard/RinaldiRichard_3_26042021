@@ -38,7 +38,7 @@ header {
     color: #000 !important;
 }
 a, a:hover, a:visited, a:active {
-	color:#ffff;
+	color:#fff;
 	text-decoration:none;
 }
 ul, li {
@@ -65,27 +65,85 @@ ul, li {
 }
 .header-flex {
     padding: 1rem 2rem 0 1rem;
-    display: flex;
-    align-items: center;
     justify-content: space-between;
     grid-column: 1 / -1;
 }
+.menu {
+    margin-top: -4rem;
+    border-radius: 2rem 2rem 0 0;
+    background-color: #f6f6f6;
+    z-index: 1;
+    position: relative;  
+    &__btn {
+        height: 2rem;
+        width: 2rem;
+        background-color: transparent;
+        border: transparent 0px solid;
+        padding: 0;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        cursor: pointer;
+        position: relative;
+        background-color: black;      
+        &:hover::before {
+            opacity: 1;
+        }      
+        &::before {
+            opacity: 0;
+            transition: 0.5s;
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            background:linear-gradient(0deg, $primaire 0%,$secondaire 100%);
+        }
+    }  
+    &__like {
+      transition-duration: .25s;
+      background-color: #f6f6f6;
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      mix-blend-mode: lighten;
+    }  
+    &__btn:hover {
+        .menu__like {
+            &--no-background {
+                opacity: 0;
+            }
+        }
+    }
+}  
+
 .fa-heart {
     position: absolute;
-    background-color: #f6f6f6 !important;      
-    font-size: 200%;
-    right: 2rem;
-    bottom: 1rem;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    &.heart {
+        transition-duration: .25s;
+        background-color: #f6f6f6;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        mix-blend-mode: lighten;
+        >:hover {
+            .test {
+                opacity: 0;
+            }
+        }
+    }   
 }
-.heart {
-    opacity: 0;
-    cursor: pointer;
-    color: rgb(255, 73, 73);
-    &:hover{
-        transition: opacity 0.5s ;
-        opacity: 1;        
-    }
-}
+
 .sous-menu {
     display: flex;
     flex-direction: column;
@@ -138,7 +196,7 @@ ul, li {
         margin-right: 0;
     }
     .fa-check {
-        background-color: #ffff;
+        background-color: #fff;
         width: 1.5rem;
         height: 1.5rem;
         display: flex;
@@ -224,11 +282,16 @@ ul, li {
     font-weight: 500;
     font-size: 1.1rem;
     border-radius: 100px;
-    color: #ffff;
-    background-image: linear-gradient(to top,$primaire,$secondaire);
+    color: #fff;
+    background-color: #707070;
+    background-image: linear-gradient(to top,rgba(147,86,220,.9),rgba(255,121,218,.9));
     transition-duration: .25s;
     box-shadow: 0.25rem 0.25rem 10px rgb(0 0 0 / 25%);
     cursor: pointer;
+    &:hover {
+        background-color: #fff;
+        box-shadow: 0.25rem 0.25rem 10px rgb(0 0 0 / 50%);
+    }
 }
 
 .footer-flex {
