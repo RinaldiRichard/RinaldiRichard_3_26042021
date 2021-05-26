@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Shrikhand&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
 body {
   font-family: Roboto, sans-serif;
   margin: 0;
@@ -20,7 +22,8 @@ ul, li {
   list-style-type: none;
 }
 
-a {
+a, a:hover, a:visited, a:active {
+  color: #ffff;
   text-decoration: none;
 }
 
@@ -39,22 +42,26 @@ a {
 .loading {
   display: flex;
   width: 100%;
-  margin-top: 35%;
+  margin-top: 40%;
   align-items: center;
   justify-content: center;
   position: fixed;
+  z-index: 100;
 }
 .loading .ball-1 {
   animation-delay: 0.25s;
 }
 .loading .ball-2 {
   animation-delay: 0.5s;
+  background-color: blue;
 }
 .loading .ball-3 {
   animation-delay: 0.75s;
+  background-color: red;
 }
 .loading .ball-4 {
   animation-delay: 1s;
+  background: green;
 }
 
 @keyframes jump {
@@ -67,7 +74,6 @@ a {
   }
 }
 header {
-  font-family: Shrikhand, sans-serif;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -126,14 +132,16 @@ header .ul-header .header-exploration {
   margin-top: 1rem;
 }
 header .ul-header .header-exploration {
-  background: linear-gradient(to bottom right, #ff79da, #9356dc);
+  background-color: #686868;
+  background-image: linear-gradient(to top, rgba(147, 86, 220, 0.9), rgba(255, 121, 218, 0.9));
   padding: 1rem;
   border-radius: 25px;
   width: fit-content;
+  box-shadow: 0.25rem 0.25rem 10px rgba(0, 0, 0, 0.25);
 }
 header .ul-header .header-exploration:hover {
-  transform: scale(1.05);
-  transition: transform 0.2s;
+  box-shadow: 0.25rem 0.25rem 10px rgba(0, 0, 0, 0.5);
+  background-color: #fff;
 }
 header .ul-header .header-exploration .exploration {
   color: white;
@@ -177,6 +185,7 @@ header h2 {
   padding: 0.2rem 0.5rem;
   border-radius: 15px;
   align-items: center;
+  color: white;
 }
 .filters-grid i {
   padding: 1.5rem 1rem;
@@ -195,6 +204,61 @@ header h2 {
   .filters-grid .li-filter {
     grid-row: 2;
   }
+}
+
+.heart {
+  background-color: white !important;
+}
+
+.menu {
+  margin-top: -4rem;
+  border-radius: 2rem 2rem 0 0;
+  background-color: #0000 !important;
+  z-index: 1;
+  position: relative;
+}
+.menu__btn {
+  height: 2rem;
+  width: 2rem;
+  background-color: transparent;
+  border: transparent 0px solid;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: relative;
+  background-color: black;
+}
+.menu__btn:hover::before {
+  opacity: 1;
+}
+.menu__btn::before {
+  opacity: 0;
+  transition: 0.5s;
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(0deg, #9356dc 0%, #ff79da 100%);
+}
+.menu__like {
+  transition-duration: 0.25s;
+  background-color: #f6f6f6;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  mix-blend-mode: lighten;
+}
+.menu__btn:hover .menu__like--no-background {
+  opacity: 0;
 }
 
 .section-restaurants {
@@ -261,6 +325,8 @@ header h2 {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: relative;
+  padding-right: 1rem;
 }
 .section-restaurants .carte-restaurants .flexdiv i {
   font-size: 2rem;
