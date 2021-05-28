@@ -91,7 +91,7 @@ ul, .divmenuflex ul li, li {
   justify-content: center;
   cursor: pointer;
   position: relative;
-  background-color: black;
+  z-index: 0;
 }
 .menu__btn:hover::before {
   opacity: 1;
