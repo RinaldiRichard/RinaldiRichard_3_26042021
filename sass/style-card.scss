@@ -84,8 +84,8 @@ ul, li {
         align-items:center;
         justify-content:center;
         cursor: pointer;
-        position: relative;
-        background-color: black;      
+        position: relative; 
+        z-index: 0;         
         &:hover::before {
             opacity: 1;
         }      
